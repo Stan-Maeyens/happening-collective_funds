@@ -1,0 +1,5 @@
+name: Collective Funds
+description: This is a plugin where you can monitor your collective funds
+api: 2
+icon: coins
+hint: Monitor your collective funds
