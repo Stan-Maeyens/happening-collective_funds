@@ -1,5 +1,6 @@
 Db = require 'db'
 Plugin = require 'plugin'
+Event = require 'event'
 
 exports.onInstall = ->
 	# set funds
@@ -14,7 +15,6 @@ exports.client_addtransaction = (userid, descr, s) !->
 	Db.shared.modify 'funds', (v) -> v + s*1
 	id = Db.shared.incr 'maxId'
 	Db.shared.set 'transactions', id, {creator: userid, description: descr, sum: s}
-	Event = require 'event'
 	Event.create
 		text: Plugin.userName(userid) + " added " + formatMoney(s)
 		sender: userid
